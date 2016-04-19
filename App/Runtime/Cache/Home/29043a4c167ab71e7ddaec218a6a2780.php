@@ -6,13 +6,13 @@
     <title>登录-借贷管理系统</title>
     <meta name = "keywords" content="<?php echo ($SiteInfo["keywords"]); ?>" >
     <meta name = "description" content="<?php echo ($SiteInfo["description"]); ?>" >
-    <link href="/borrow/Public/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/borrow/Public/font-awesome/css/font-awesome.css" rel="stylesheet">
-    <link href="/borrow/Public/css/plugins/iCheck/custom.css" rel="stylesheet">
-    <link href="/borrow/Public/css/animate.css" rel="stylesheet">
-    <link href="/borrow/Public/css/style.css" rel="stylesheet">
+    <link href="/Public/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/Public/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="/Public/css/plugins/iCheck/custom.css" rel="stylesheet">
+    <link href="/Public/css/animate.css" rel="stylesheet">
+    <link href="/Public/css/style.css" rel="stylesheet">
 
-    <link rel="shortcut icon" href="/borrow/Public/img/favicon.ico" />
+    <link rel="shortcut icon" href="/Public/img/favicon.ico" />
 
 </head>
 
@@ -25,7 +25,7 @@
                     <h2 >借贷管理系统</h2>
                 </div>
 
-                <form class="m-t" role="form" action="/borrow/index.php/Home/Login/login_act" method="post">
+                <form class="m-t" role="form" action="/index.php/Home/Login/login_act" method="post">
                     <div class="form-group">
                         <input type="name" class="form-control" placeholder="用户名" name="name" id="login-name">
                     </div>
@@ -53,52 +53,52 @@
         </div>
         </div>
 
-    <script src="/borrow/Public/js/jquery.min.js-v=2.1.4"></script>
-    <script src="/borrow/Public/js/jquery-ui-1.10.4.min.js"></script>
-    <script src="/borrow/Public/js/bootstrap.min.js-v=3.3.5"></script>
+    <script src="/Public/js/jquery.min.js-v=2.1.4"></script>
+    <script src="/Public/js/jquery-ui-1.10.4.min.js"></script>
+    <script src="/Public/js/bootstrap.min.js-v=3.3.5"></script>
 
-    <script src="/borrow/Public/js/plugins/metisMenu/jquery.metisMenu.js"></script>
-    <script src="/borrow/Public/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="/Public/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="/Public/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
 
     <!-- Custom and plugin javascript -->
-    <script src="/borrow/Public/js/inspinia.js"></script>
-    <script src="/borrow/Public/js/plugins/pace/pace.min.js"></script>
+    <script src="/Public/js/inspinia.js"></script>
+    <script src="/Public/js/plugins/pace/pace.min.js"></script>
 
     <!-- iCheck -->
-    <script src="/borrow/Public/js/plugins/iCheck/icheck.min.js"></script>
+    <script src="/Public/js/plugins/iCheck/icheck.min.js"></script>
 
     <!-- Jvectormap -->
-    <script src="/borrow/Public/js/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
-    <script src="/borrow/Public/js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+    <script src="/Public/js/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+    <script src="/Public/js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
 
     <!-- Flot -->
-    <script src="/borrow/Public/js/plugins/flot/jquery.flot.js"></script>
-    <script src="/borrow/Public/js/plugins/flot/jquery.flot.tooltip.min.js"></script>
-    <script src="/borrow/Public/js/plugins/flot/jquery.flot.resize.js"></script>
+    <script src="/Public/js/plugins/flot/jquery.flot.js"></script>
+    <script src="/Public/js/plugins/flot/jquery.flot.tooltip.min.js"></script>
+    <script src="/Public/js/plugins/flot/jquery.flot.resize.js"></script>
 
     <!-- laydate -->
-    <script src="/borrow/Public/js/plugins/layer/laydate/laydate.js"></script>
+    <script src="/Public/js/plugins/layer/laydate/laydate.js"></script>
     
     <!-- validate -->
-    <script src="/borrow/Public/js/plugins/validate/jquery.validate.min.js"></script>
-    <script src="/borrow/Public/js/plugins/validate/messages_zh.min.js"></script>
+    <script src="/Public/js/plugins/validate/jquery.validate.min.js"></script>
+    <script src="/Public/js/plugins/validate/messages_zh.min.js"></script>
 
     <!-- morris -->
-    <script src="/borrow/Public/js/plugins/morris/morris.js"></script>
-    <script src="/borrow/Public/js/plugins/morris/raphael-2.1.0.min.js"></script>
+    <script src="/Public/js/plugins/morris/morris.js"></script>
+    <script src="/Public/js/plugins/morris/raphael-2.1.0.min.js"></script>
     
     <!-- morris -->
-    <script src="/borrow/Public/js/plugins/tableexport/Blob.js"></script>
-    <script src="/borrow/Public/js/plugins/tableexport/FileSaver.js"></script>
-    <script src="/borrow/Public/js/plugins/tableexport/tableExport.js"></script>
+    <script src="/Public/js/plugins/tableexport/Blob.js"></script>
+    <script src="/Public/js/plugins/tableexport/FileSaver.js"></script>
+    <script src="/Public/js/plugins/tableexport/tableExport.js"></script>
     
     <!-- Data Tables -->
-    <script src="/borrow/Public/js/plugins/dataTables/jquery.dataTables.js"></script>
-    <script src="/borrow/Public/js/plugins/dataTables/dataTables.bootstrap.js"></script>
+    <script src="/Public/js/plugins/dataTables/jquery.dataTables.js"></script>
+    <script src="/Public/js/plugins/dataTables/dataTables.bootstrap.js"></script>
 
     <!-- fullcalendar -->
-    <script src="/borrow/Public/js/jquery-ui.custom.min.js"></script>
-    <script src="/borrow/Public/js/plugins/fullcalendar/fullcalendar.min.js"></script>
+    <script src="/Public/js/jquery-ui.custom.min.js"></script>
+    <script src="/Public/js/plugins/fullcalendar/fullcalendar.min.js"></script>
 
     
     <!-- 时间选择插件 laydate -->
@@ -254,7 +254,7 @@
                       "processing": true,
                       "serverSide": true,
                       ajax: {
-                            url: '/borrow/index.php/Home/Index/ajaxquery',
+                            url: '/index.php/Home/Index/ajaxquery',
                             dataSrc: 'data',
                       },
                       "columnDefs": [ {
@@ -344,7 +344,7 @@
                       "processing": true,
                       "serverSide": true,
                       ajax: {
-                            url: '/borrow/index.php/Home/Borrow/ajaxquery',
+                            url: '/index.php/Home/Borrow/ajaxquery',
                             dataSrc: 'data',
                       },
                       "columnDefs": [ {
@@ -441,7 +441,7 @@
                   "processing": true,
                   "serverSide": true,
                   ajax: {
-                        url: '/borrow/index.php/Home/Repayment/ajaxquery',
+                        url: '/index.php/Home/Repayment/ajaxquery',
                         dataSrc: 'data',
                   },
                   "columnDefs": [ {
@@ -533,7 +533,7 @@
                   "processing": true,
                   "serverSide": true,
                   ajax: {
-                        url: '/borrow/index.php/Home/User/ajaxquery',
+                        url: '/index.php/Home/User/ajaxquery',
                         dataSrc: 'data',
                   },
                   "columnDefs": [ {
@@ -640,7 +640,7 @@
                 $("#calendar").fullCalendar("renderEvent", d, true);
             },
             events: function(start, end, callback) {
-                        $.getJSON("/borrow/index.php/Home/Index/richeng/m/"+end.getMonth()+"/y/"+end.getFullYear(), function(result) {
+                        $.getJSON("/index.php/Home/Index/richeng/m/"+end.getMonth()+"/y/"+end.getFullYear(), function(result) {
                                                                             // console.log(result.data);
                                                                             callback(result.data);
                                                                 }

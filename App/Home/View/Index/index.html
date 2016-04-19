@@ -14,19 +14,20 @@
 	        </div>
 	    </div>
 	</div>
-	<div class="col-sm-3">
-	    <div class="ibox float-e-margins">
-	        <div class="ibox-title">
-	            <span class="label label-success pull-right">元</span>
-	            <h5>应收手续费</h5>
-	        </div>
-	        <div class="ibox-content">
-	            <h1 class="no-margins">{$all_borrow_procedures|money_format}</h1>
-	            <div class="stat-percent font-bold text-success"></div>
-	            <small>应收手续费总额</small>
-	        </div>
-	    </div>
-	</div>
+      <div class="col-sm-3">
+          <div class="ibox float-e-margins">
+              <div class="ibox-title">
+                  <span class="label label-success pull-right">元</span>
+                  <h5>到期未收利息</h5>
+              </div>
+              <div class="ibox-content">
+                  <h1 class="no-margins">{$now_borrow_interest|money_format}</h1>
+                  <div class="stat-percent font-bold text-success"></div>
+                  <small>截止今天到期未收利息总额</small>
+              </div>
+          </div>
+      </div>
+
       <div class="col-sm-3">
           <div class="ibox float-e-margins">
               <div class="ibox-title">
@@ -40,16 +41,17 @@
               </div>
           </div>
       </div>
+      
       <div class="col-sm-3">
           <div class="ibox float-e-margins">
               <div class="ibox-title">
                   <span class="label label-success pull-right">元</span>
-                  <h5>到期未收利息</h5>
+                  <h5>应收手续费</h5>
               </div>
               <div class="ibox-content">
-                  <h1 class="no-margins">{$now_borrow_interest|money_format}</h1>
+                  <h1 class="no-margins">{$all_borrow_procedures|money_format}</h1>
                   <div class="stat-percent font-bold text-success"></div>
-                  <small>截止今天到期未收利息总额</small>
+                  <small>应收手续费总额</small>
               </div>
           </div>
       </div>
@@ -72,15 +74,16 @@
           <div class="ibox float-e-margins">
               <div class="ibox-title">
                   <span class="label label-danger pull-right">元</span>
-                  <h5 class="text-danger">实收手续费</h5>
+                  <h5 class="text-danger">实收利息</h5>
               </div>
               <div class="ibox-content">
-                  <h1 class="no-margins">{$repayment_borrow_procedures|money_format}</h1>
+                  <h1 class="no-margins">{$re_borrow_interest|money_format}</h1>
                   <div class="stat-percent font-bold text-danger"></div>
-                  <small>实收手续费总额</small>
+                  <small>实收利息总额</small>
               </div>
           </div>
       </div>
+
       <div class="col-sm-3">
           <div class="ibox float-e-margins">
               <div class="ibox-title">
@@ -94,19 +97,21 @@
               </div>
           </div>
       </div>
+
       <div class="col-sm-3">
           <div class="ibox float-e-margins">
               <div class="ibox-title">
                   <span class="label label-danger pull-right">元</span>
-                  <h5 class="text-danger">实收利息</h5>
+                  <h5 class="text-danger">实收手续费</h5>
               </div>
               <div class="ibox-content">
-                  <h1 class="no-margins">{$re_borrow_interest|money_format}</h1>
+                  <h1 class="no-margins">{$repayment_borrow_procedures|money_format}</h1>
                   <div class="stat-percent font-bold text-danger"></div>
-                  <small>实收利息总额</small>
+                  <small>实收手续费总额</small>
               </div>
           </div>
       </div>
+
 </div>
 
 <div class="row">

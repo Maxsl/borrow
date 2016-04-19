@@ -9,23 +9,23 @@
     <title><?php echo ($title); ?></title>
     <meta name = "keywords" content="<?php echo ($SiteInfo["keywords"]); ?>" >
     <meta name = "description" content="<?php echo ($SiteInfo["description"]); ?>" >
-    <link href="/borrow/Public/css/bootstrap.min.css-v=3.3.5.css" rel="stylesheet">
-    <link href="/borrow/Public/font-awesome/css/font-awesome.css" rel="stylesheet">
-    <link href="/borrow/Public/css/plugins/iCheck/custom.css" rel="stylesheet">
+    <link href="/Public/css/bootstrap.min.css-v=3.3.5.css" rel="stylesheet">
+    <link href="/Public/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="/Public/css/plugins/iCheck/custom.css" rel="stylesheet">
     <!-- morris -->
-    <link href="/borrow/Public/css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet">
+    <link href="/Public/css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet">
     
     <!-- fullcalendar -->
-    <link href="/borrow/Public/css/plugins/fullcalendar/fullcalendar.css"  rel="stylesheet">
-    <link href="/borrow/Public/css/plugins/fullcalendar/fullcalendar.print.css" rel="stylesheet">
+    <link href="/Public/css/plugins/fullcalendar/fullcalendar.css"  rel="stylesheet">
+    <link href="/Public/css/plugins/fullcalendar/fullcalendar.print.css" rel="stylesheet">
 
-    <link href="/borrow/Public/css/animate.css" rel="stylesheet">
-    <link href="/borrow/Public/css/style.css" rel="stylesheet">
+    <link href="/Public/css/animate.css" rel="stylesheet">
+    <link href="/Public/css/style.css" rel="stylesheet">
 
     <!-- Data Tables -->
-    <link href="/borrow/Public/css/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet">
+    <link href="/Public/css/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet">
 
-    <link rel="shortcut icon" href="/borrow/Public/img/favicon.ico" />
+    <link rel="shortcut icon" href="/Public/img/favicon.ico" />
 
 </head>
 
@@ -38,8 +38,8 @@
                 <ul class="nav" id="side-menu">
                     <li class="nav-header" style="text-align:center;">
                         <div class="dropdown profile-element"> <span>
-                        <a href="/borrow/index.php">
-                            <img alt="image" class="img-circle" src="/borrow/Public/img/borrow_log_600x600.png" width="80px;"  height="80px;" />
+                        <a href="/index.php">
+                            <img alt="image" class="img-circle" src="/Public/img/borrow_log_600x600.png" width="80px;"  height="80px;" />
                         </a>
                         </span>
                         <span class="clear">
@@ -58,10 +58,10 @@
                         </a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a class="J_menuItem" href="/borrow/index.php/Home/Borrow/add" data-index="0">添加借款</a>
+                                <a class="J_menuItem" href="/index.php/Home/Borrow/add" data-index="0">添加借款</a>
                             </li>
                             <li>
-                                <a class="J_menuItem" href="/borrow/index.php/Home/Borrow" data-index="1">借款列表</a>
+                                <a class="J_menuItem" href="/index.php/Home/Borrow" data-index="1">借款列表</a>
                             </li>
                         </ul>
                     </li>
@@ -73,10 +73,10 @@
                         </a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a class="J_menuItem" href="/borrow/index.php/Home/Repayment" data-index="2">还款列表</a>
+                                <a class="J_menuItem" href="/index.php/Home/Repayment" data-index="2">还款列表</a>
                             </li>
                             <li>
-                                <a class="J_menuItem" href="/borrow/index.php/Home/Repayment/chart" data-index="3">还款统计</a>
+                                <a class="J_menuItem" href="/index.php/Home/Repayment/chart" data-index="3">还款统计</a>
                             </li>
                         </ul>
                     </li>
@@ -88,10 +88,10 @@
                         </a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a class="J_menuItem" href="/borrow/index.php/Home/User" data-index="4">借款人列表</a>
+                                <a class="J_menuItem" href="/index.php/Home/User" data-index="4">借款人列表</a>
                             </li>
                             <li>
-                                <a class="J_menuItem" href="/borrow/index.php/Home/User/add" data-index="5">添加借款人</a>
+                                <a class="J_menuItem" href="/index.php/Home/User/add" data-index="5">添加借款人</a>
                             </li>
                         </ul>
                     </li>
@@ -103,7 +103,7 @@
                         </a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a class="J_menuItem" href="/borrow/index.php/Home/Config/dbbak" data-index="4">备份数据库</a>
+                                <a class="J_menuItem" href="/index.php/Home/Config/dbbak" data-index="4">备份数据库</a>
                             </li>
                         </ul>
                     </li>
@@ -131,7 +131,7 @@
                                 </a>
                                 <ul class="dropdown-menu dropdown-messages" style="width: 120px;">
                                     <li>
-                                        <strong><a href="/borrow/index.php/Home/login/logout">退出登陆</a></strong>
+                                        <strong><a href="/index.php/Home/login/logout">退出登陆</a></strong>
                                     </li>
                                 </ul>
                             </li>
@@ -210,7 +210,7 @@
     <!-- 选择还款时间模态窗口开始 -->
 <div class="modal inmodal fade" id="user_relation" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
           <div class="modal-dialog modal-sm">
-              <form method="post" class="form-horizontal" action="/borrow/index.php/Home/Repayment/confirm_repayment">
+              <form method="post" class="form-horizontal" action="/index.php/Home/Repayment/confirm_repayment">
               <div class="modal-content">
                   <div class="modal-header">
                       <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true" class="text-danger"><i class="fa fa-times"></i></span><span class="sr-only">Close</span></button>
@@ -246,52 +246,52 @@
         </div>
         </div>
 
-    <script src="/borrow/Public/js/jquery.min.js-v=2.1.4"></script>
-    <script src="/borrow/Public/js/jquery-ui-1.10.4.min.js"></script>
-    <script src="/borrow/Public/js/bootstrap.min.js-v=3.3.5"></script>
+    <script src="/Public/js/jquery.min.js-v=2.1.4"></script>
+    <script src="/Public/js/jquery-ui-1.10.4.min.js"></script>
+    <script src="/Public/js/bootstrap.min.js-v=3.3.5"></script>
 
-    <script src="/borrow/Public/js/plugins/metisMenu/jquery.metisMenu.js"></script>
-    <script src="/borrow/Public/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="/Public/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="/Public/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
 
     <!-- Custom and plugin javascript -->
-    <script src="/borrow/Public/js/inspinia.js"></script>
-    <script src="/borrow/Public/js/plugins/pace/pace.min.js"></script>
+    <script src="/Public/js/inspinia.js"></script>
+    <script src="/Public/js/plugins/pace/pace.min.js"></script>
 
     <!-- iCheck -->
-    <script src="/borrow/Public/js/plugins/iCheck/icheck.min.js"></script>
+    <script src="/Public/js/plugins/iCheck/icheck.min.js"></script>
 
     <!-- Jvectormap -->
-    <script src="/borrow/Public/js/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
-    <script src="/borrow/Public/js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+    <script src="/Public/js/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+    <script src="/Public/js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
 
     <!-- Flot -->
-    <script src="/borrow/Public/js/plugins/flot/jquery.flot.js"></script>
-    <script src="/borrow/Public/js/plugins/flot/jquery.flot.tooltip.min.js"></script>
-    <script src="/borrow/Public/js/plugins/flot/jquery.flot.resize.js"></script>
+    <script src="/Public/js/plugins/flot/jquery.flot.js"></script>
+    <script src="/Public/js/plugins/flot/jquery.flot.tooltip.min.js"></script>
+    <script src="/Public/js/plugins/flot/jquery.flot.resize.js"></script>
 
     <!-- laydate -->
-    <script src="/borrow/Public/js/plugins/layer/laydate/laydate.js"></script>
+    <script src="/Public/js/plugins/layer/laydate/laydate.js"></script>
     
     <!-- validate -->
-    <script src="/borrow/Public/js/plugins/validate/jquery.validate.min.js"></script>
-    <script src="/borrow/Public/js/plugins/validate/messages_zh.min.js"></script>
+    <script src="/Public/js/plugins/validate/jquery.validate.min.js"></script>
+    <script src="/Public/js/plugins/validate/messages_zh.min.js"></script>
 
     <!-- morris -->
-    <script src="/borrow/Public/js/plugins/morris/morris.js"></script>
-    <script src="/borrow/Public/js/plugins/morris/raphael-2.1.0.min.js"></script>
+    <script src="/Public/js/plugins/morris/morris.js"></script>
+    <script src="/Public/js/plugins/morris/raphael-2.1.0.min.js"></script>
     
     <!-- morris -->
-    <script src="/borrow/Public/js/plugins/tableexport/Blob.js"></script>
-    <script src="/borrow/Public/js/plugins/tableexport/FileSaver.js"></script>
-    <script src="/borrow/Public/js/plugins/tableexport/tableExport.js"></script>
+    <script src="/Public/js/plugins/tableexport/Blob.js"></script>
+    <script src="/Public/js/plugins/tableexport/FileSaver.js"></script>
+    <script src="/Public/js/plugins/tableexport/tableExport.js"></script>
     
     <!-- Data Tables -->
-    <script src="/borrow/Public/js/plugins/dataTables/jquery.dataTables.js"></script>
-    <script src="/borrow/Public/js/plugins/dataTables/dataTables.bootstrap.js"></script>
+    <script src="/Public/js/plugins/dataTables/jquery.dataTables.js"></script>
+    <script src="/Public/js/plugins/dataTables/dataTables.bootstrap.js"></script>
 
     <!-- fullcalendar -->
-    <script src="/borrow/Public/js/jquery-ui.custom.min.js"></script>
-    <script src="/borrow/Public/js/plugins/fullcalendar/fullcalendar.min.js"></script>
+    <script src="/Public/js/jquery-ui.custom.min.js"></script>
+    <script src="/Public/js/plugins/fullcalendar/fullcalendar.min.js"></script>
 
     
     <!-- 时间选择插件 laydate -->
@@ -447,7 +447,7 @@
                       "processing": true,
                       "serverSide": true,
                       ajax: {
-                            url: '/borrow/index.php/Home/Index/ajaxquery',
+                            url: '/index.php/Home/Index/ajaxquery',
                             dataSrc: 'data',
                       },
                       "columnDefs": [ {
@@ -537,7 +537,7 @@
                       "processing": true,
                       "serverSide": true,
                       ajax: {
-                            url: '/borrow/index.php/Home/Borrow/ajaxquery',
+                            url: '/index.php/Home/Borrow/ajaxquery',
                             dataSrc: 'data',
                       },
                       "columnDefs": [ {
@@ -634,7 +634,7 @@
                   "processing": true,
                   "serverSide": true,
                   ajax: {
-                        url: '/borrow/index.php/Home/Repayment/ajaxquery',
+                        url: '/index.php/Home/Repayment/ajaxquery',
                         dataSrc: 'data',
                   },
                   "columnDefs": [ {
@@ -726,7 +726,7 @@
                   "processing": true,
                   "serverSide": true,
                   ajax: {
-                        url: '/borrow/index.php/Home/User/ajaxquery',
+                        url: '/index.php/Home/User/ajaxquery',
                         dataSrc: 'data',
                   },
                   "columnDefs": [ {
@@ -833,7 +833,7 @@
                 $("#calendar").fullCalendar("renderEvent", d, true);
             },
             events: function(start, end, callback) {
-                        $.getJSON("/borrow/index.php/Home/Index/richeng/m/"+end.getMonth()+"/y/"+end.getFullYear(), function(result) {
+                        $.getJSON("/index.php/Home/Index/richeng/m/"+end.getMonth()+"/y/"+end.getFullYear(), function(result) {
                                                                             // console.log(result.data);
                                                                             callback(result.data);
                                                                 }

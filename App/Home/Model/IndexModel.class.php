@@ -5,20 +5,23 @@ class IndexModel extends Model{
 	protected $autoCheckFields =false;
 	//总利息
 	public function all_borrow_interest(){
-		$borrow_repayment =M('borrow_repayment');
-		$borrow=M('borrow');
-		$all_borrow = $borrow ->field('id,borrow_duration,borrow_interest')->select();
+
+		$all_borrow = M('borrow') ->field('id,borrow_duration,borrow_interest,repayment_type')->select();
 		$re_borrow_interest = '';
 		foreach ($all_borrow as $key => $value) {
 			//当前用户已还款记录数
-			$this_borrow = $borrow_repayment->field('count(id) as count,sum(repayment_money) as all_repayment_money')->where('borrow_id='.$value['id'].' AND is_repayment = 1')->find();
+			$this_borrow = M('borrow_repayment')->field('count(id) as count,sum(repayment_money) as all_repayment_money')->where('borrow_id='.$value['id'].' AND is_repayment = 1')->find();
 
 			//判断已还款记录是否和还款期数相同
-			$value['borrow_duration'] = intval($value['borrow_duration']);
-			if ($this_borrow['count'] == $value['borrow_duration']) {        //相同 累加借款表内的利息值
-				$re_borrow_interest += $value['borrow_interest'];
+			// $value['borrow_duration'] = intval($value['borrow_duration']);
+			if ($value['repayment_type'] == "到期本息" ) {
+				$re_borrow_interest += $value['borrow_interest'] ;
 			}else{
-				$re_borrow_interest += $this_borrow['all_repayment_money'];    //不同 则累加已还款记录内的值
+				if ($this_borrow['count'] == $value['borrow_duration']) {        //相同 累加借款表内的利息值
+					$re_borrow_interest += $value['borrow_interest'];
+				}else{
+					$re_borrow_interest += $this_borrow['all_repayment_money'];    //不同 则累加已还款记录内的值
+				}
 			}
 		}
 		return $re_borrow_interest;
