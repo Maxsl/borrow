@@ -10,17 +10,16 @@ class UserModel extends CommonModel{
 	 	$user_borrow = M('borrow')->where('borrow_uid='.$user_id)->select();
 
 	 	$all_re_borrow_interest = 0;
-
-	 	// var_dump($user_borrow);
+	 	
 	 	foreach ($user_borrow as $key => $value) {
 	 		//当前用户已还款记录数
 	 		$this_borrow_repayment = M('borrow_repayment')->field('count(id) as count,sum(repayment_money) as all_repayment_money')->where('borrow_id='.$value['id'].' AND is_repayment = 1')->find();
 	 		
-	 		if ($user_borrow['repayment_type'] == "到期本息" ) {
-	 			$all_re_borrow_interest += $user_borrow['borrow_interest'] ;
+	 		if ($value['repayment_type'] == "到期本息" ) {
+	 			$all_re_borrow_interest += $value['borrow_interest'] ;
 	 		}else{
-	 			if ($this_borrow_repayment['count'] == $user_borrow['borrow_duration']) {
-	 				$all_re_borrow_interest += $user_borrow['borrow_interest'] ;
+	 			if ($this_borrow_repayment['count'] == $value['borrow_duration']) {
+	 				$all_re_borrow_interest += $value['borrow_interest'] ;
 	 			}else{
 	 				$all_re_borrow_interest += $this_borrow_repayment['all_repayment_money'];
 	 			}
