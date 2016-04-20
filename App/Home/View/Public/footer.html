@@ -403,7 +403,7 @@
                         dataSrc: 'data',
                   },
                   "columnDefs": [ {
-                  "targets": 8,
+                  "targets": [8,9],
                   "orderable": false
                   } ],
                   "columns": [
@@ -420,6 +420,7 @@
                             { "data": "repayment_time" },
                             { "data": "real_repayment_time"},
                             { "data": "is_late" },
+                            { "data": "all_late_money" },
                             { "data": "action"}
                   ],
 
@@ -495,7 +496,7 @@
                         dataSrc: 'data',
                   },
                   "columnDefs": [ {
-                  "targets": [4,5,6,7,9],
+                  "targets": [4,5,6,7,8,9,10,12],
                   "orderable": false
                   } ],
                   "columns": [
@@ -507,12 +508,15 @@
                             },
                             { "data": "id" },
                             { "data": "name"},
-                            { "data":"phone"},
-                            { "data":"all_borrow_money"},
-                            { "data":"all_borrow_procedures"},
-                            { "data":"all_borrow_interest"},
-                            { "data":"all_re_borrow_interest"},
-                            { "data":"add_time"},
+                            { "data": "phone"},
+                            { "data": "late_rate"},
+                            { "data": "borrow_count"},
+                            { "data": "borrow_renew_count"},
+                            { "data": "all_borrow_money"},
+                            { "data": "all_borrow_procedures"},
+                            { "data": "all_borrow_interest"},
+                            { "data": "all_re_borrow_interest"},
+                            { "data": "add_time"},
                             { "data": "action"}
                   ],
                   "order": [ 1, 'desc' ],
@@ -605,6 +609,32 @@
                         )},
         });
     });
+    </script>
+    <script>
+        function DX(num) {
+                var strOutput = "",
+                strUnit = '仟佰拾亿仟佰拾万仟佰拾元角分';
+                num += "00";
+                var intPos = num.indexOf('.');
+                if (intPos >= 0){
+                        num = num.substring(0, intPos) + num.substr(intPos + 1, 2);
+                }
+                strUnit = strUnit.substr(strUnit.length - num.length);
+                for (var i=0; i < num.length; i++){
+                        strOutput += '零壹贰叁肆伍陆柒捌玖'.substr(num.substr(i,1),1) + strUnit.substr(i,1);
+                }
+                return strOutput.replace(/零角零分$/, '整').replace(/零[仟佰拾]/g, '零').replace(/零{2,}/g, '零').replace(/零([亿|万])/g, '$1').replace(/零+元/, '元').replace(/亿零{0,3}万/, '亿').replace(/^元/, "零元")
+        }; 
+
+    $(document).ready(function(){  
+            $('input[name=name]').focus();   //登录页面焦点
+            $('input[name=borrow_money]').on( 'keyup', function () {
+                        var format = DX(this.value);
+                        $('#input_money_format').html(format);
+            });
+
+     });
+
     </script>
 </body>
 

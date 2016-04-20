@@ -78,8 +78,13 @@ class RepaymentController extends CommonController {
                             $borrow_repayment_list[$key]['is_late'] = "<span class='text-danger'>逾期</span>";
                 }
 
-                $borrow_repayment_list[$key]['repayment_remarks'] = $value['repayment_remarks'];
-
+                if (!empty($value['repayment_remarks'])) {
+                            $borrow_repayment_list[$key]['id'].=   "<i class='fa fa-asterisk text-danger'></i>";
+                }
+                
+                $borrow_repayment_list[$key]['repayment_remarks'] = $value['repayment_remarks'];    //备注
+                $borrow_repayment_list[$key]['all_late_money'] = M('borrow_repayment')->where('id='.$value['id'])->getfield('sum(late_penalty_money+late_interest_money)');    //所有逾期费用
+                
                 $repayment_edit_url = U('Repayment/edit',array('id' => $value['id']));
                 $del_repayment_url = U('Repayment/del_repayment',array('id' => $value['id']));
 

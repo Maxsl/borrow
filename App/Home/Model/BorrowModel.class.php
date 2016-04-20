@@ -19,7 +19,8 @@ class BorrowModel extends CommonModel{
 	 			return $this_borrow['borrow_interest'];
 	 		}else{	
 	 			if ($this_borrow['repayment_type'] == "到期本息" ) {
-	 				$repayment_times = 1;
+	 				// $repayment_times = 1;
+	 				return $this_borrow['borrow_interest'];
 	 			}else{
 	 				$repayment_times = $this_borrow['borrow_duration'];
 	 			}

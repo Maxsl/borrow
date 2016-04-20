@@ -9,8 +9,10 @@ class CommonController extends Controller {
          }
 
          public function change_late(){
-                  M('borrow_repayment')->where('repayment_time < '.time().' AND is_repayment = 0')->setField('is_late',1);
-         	        M('borrow_repayment')->where('is_repayment = 1')->setField('is_late',0);
+                  $time  = getdate();
+                  $now_time = mktime(0,0,0,$time['mon'],$time['mday'],$time['year']);
+                  M('borrow_repayment')->where('real_repayment_time <= repayment_time')->setField('is_late',0);
+                  M('borrow_repayment')->where('repayment_time < '.$now_time.' AND is_repayment = 0 OR real_repayment_time > repayment_time')->setField('is_late',1);
          }
 
          protected function check_login($return){

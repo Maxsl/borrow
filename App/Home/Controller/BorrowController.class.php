@@ -69,6 +69,7 @@ class BorrowController extends CommonController {
                         if (!empty($value['borrow_remarks'])) {
                                     $borrow_list[$key]['id'].=   "<i class='fa fa-asterisk text-danger'></i>";
                         }
+                        
                         if ($value['procedures_time'] != 0) {
                                     $borrow_list[$key]['borrow_procedures'] =$value['borrow_procedures']."<span class='text-success'>(已收".date('Y-m-d',$value['procedures_time']).")</span>";
                         }

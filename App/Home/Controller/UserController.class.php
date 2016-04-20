@@ -52,6 +52,13 @@ class UserController extends CommonController {
                       $user_list[$key]['all_borrow_interest'] = M('borrow')->where('borrow_uid = '.$value['id'])->getfield('sum(borrow_interest)');   //此借款人总利息
                       $user_list[$key]['all_re_borrow_interest'] = D('user')->all_re_borrow_interest($value['id']);  //此借款人实收利息
 
+                      $this_user_repayment_count = M('borrow_repayment')->where('borrow_uid = '.$value['id'])->count();    //此借款人所有还款数
+                      $this_user_repayment_late_count = M('borrow_repayment')->where('borrow_uid = '.$value['id'].' AND is_late = 1')->count();    //此借款人所有逾期还款数
+
+                      $user_list[$key]['late_rate'] = round($this_user_repayment_late_count/$this_user_repayment_count*100,2)."%";     //逾期率
+                      $user_list[$key]['borrow_count'] = M('borrow')->where('borrow_uid = '.$value['id'].' AND renew_id = 0')->count();      //借款总数 不包含续借
+                      $user_list[$key]['borrow_renew_count'] = M('borrow')->where('borrow_uid = '.$value['id'].' AND renew_id != 0')->count();      //借款续借总数
+
                       $user_edit_url = U('User/edit',array('id' =>$value['id']));
                       $del_user_url = U('User/del_user',array('id' =>$value['id']));
                       $user_list[$key]['action'] = <<<HTML
