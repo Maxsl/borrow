@@ -70,9 +70,17 @@ class BorrowController extends CommonController {
                                     $borrow_list[$key]['id'].=   "<i class='fa fa-asterisk text-danger'></i>";
                         }
                         
-                        if ($value['procedures_time'] != 0) {
-                                    $borrow_list[$key]['borrow_procedures'] =$value['borrow_procedures']."<span class='text-success'>(已收".date('Y-m-d',$value['procedures_time']).")</span>";
+                        if ($value['procedures_time'] !== 0) {
+                                    $borrow_list[$key]['borrow_procedures'] =$value['borrow_procedures']."<span class='text-success'>(".date('Y-m-d',$value['procedures_time']).")</span>";
                         }
+
+                        if ($value['is_procedures'] == 0) {
+                                $borrow_list[$key]['is_procedures'] = "<span class='text-danger'>未还</span>";
+                        }elseif ($value['is_procedures'] == 1) {
+                                $borrow_list[$key]['is_procedures'] = "<span class='text-success'>已还</span>";
+                                
+                        }
+
                         
                         $borrow_list[$key]['re_borrow_interest'] = D('Borrow')->re_borrow_interest($value['id']);
 
@@ -135,6 +143,101 @@ HTML;
             $this->assign("borrow_user_relation_list",$borrow_user_relation_list);
             $this->assign("title","编辑借款-借贷管理系统");
             $this->display();
+    }
+
+
+    //手续费
+    public function borrow_procedures(){
+              $this->assign("title","手续费列表-借贷管理系统");
+              $this->display();
+    }
+
+    public function borrow_procedures_ajaxquery(){
+                    $order_column = $_GET['order'][0]['column'];
+                    $order_data = $_GET['columns'][$order_column]['data'];
+                    $dir = $_GET['order'][0]['dir'];
+                    //生成排序规则
+                    $order = $order_data.' '.$dir;
+                    //datatable全部数据     
+                    $columns = $_GET['columns'];
+
+
+                    // 查询规则
+                    $where = "";
+                    if (!empty($columns[0]['search']['value'])) {
+                            $where.= " AND b.id =".$columns[0]['search']['value'];
+                    }
+                    if (!empty($columns[1]['search']['value'])) {
+                            $where.= " AND b.borrow_number LIKE '%".$columns[1]['search']['value']."%'";
+                    }
+                    if (!empty($columns[2]['search']['value'])) {
+                            $where.= " AND u.name LIKE '%".$columns[2]['search']['value']."%'";
+                    }
+
+                    $Model = new \Think\Model();
+                    $borrow_list  = $Model
+                    ->table(array(
+                               'borrow'=>'b',
+                               'user'=>'u'
+                           )
+                     )
+                    ->where('b.borrow_uid = u.id'.$where)
+                    ->field('b.*, u.name')
+                    ->order($order)
+                    ->limit(I('get.start').','.I('get.length'))
+                    ->select();
+
+                    // 总数目
+                    $count  = $Model
+                    ->table(array(
+                               'borrow'=>'b',
+                               'user'=>'u'
+                           )
+                     )
+                    ->where('b.borrow_uid = u.id')
+                    ->field('b.*, u.name')
+                    ->order('borrow_number')
+                    ->count();
+                //处理数据
+                foreach ($borrow_list as $key => $value) {
+
+                        $borrow_list[$key]['borrow_number'] = '<a href="'.U('Borrow/edit',array('id' => $value['borrow_id'])).'">'.$value['borrow_number'].'</a>';
+                        $borrow_list[$key]['name'] = '<a href="'.U('User/edit',array('id' => $value['borrow_uid'])).'">'.$value['name'].'</a>';
+                        $borrow_list[$key]['borrow_time'] = date('Y-m-d',$value['borrow_time']);
+                        $borrow_end_time = M('borrow_repayment')->where('borrow_id='.$value['id'])->order('id desc')->getfield('repayment_time');
+                        $borrow_list[$key]['end_time'] = date('Y-m-d',$borrow_end_time);
+                        if ($borrow_end_time<time()) {
+                                    $borrow_list[$key]['id'] =  "<del>$value[id]</del>";
+                        }
+                        if (!empty($value['borrow_remarks'])) {
+                                    $borrow_list[$key]['id'].=   "<i class='fa fa-asterisk text-danger'></i>";
+                        }
+                        
+                        if ($value['procedures_time'] != 0) {
+                                    $borrow_list[$key]['borrow_procedures'] =$value['borrow_procedures']."<span class='text-success'>(已收".date('Y-m-d',$value['procedures_time']).")</span>";
+                        }
+                        
+                        $borrow_edit_url = U('Borrow/edit',array('id'=>$value['id']));
+                        $borrow_renew_url = U('Borrow/renew',array('id'=>$value['id']));
+                        $del_borrow_url = U('Borrow/del_borrow',array('id'=>$value['id']));
+                        
+                        $borrow_list[$key]['action'] =<<<HTML
+                     <a title="编辑" href="$borrow_edit_url "><i class="fa fa-edit text-info"></i></button>
+                     <a title="续借" href="$borrow_renew_url"><i class="fa fa-copy text-success"></i></a>
+                     <a title="确认收取手续费" data-toggle="modal" data-target="#confirm_procedures" onclick="change_id($value[id])"><i class="fa fa-cny text-warning"></i></a>
+                     <a title="删除" onclick="if(confirm('确认删除这条记录？')){location.href='$del_borrow_url';}"><i class="fa fa-trash text-danger"></i></a>
+HTML;
+                }
+
+                $output = array(
+                    "draw" => intval($_GET['draw']),
+                    "recordsTotal" => $count,       //总数目
+                    "recordsFiltered" => $count,        //过滤数目
+                    "sql" => $sql,
+                    "order" => $order,
+                    "data" => $borrow_list
+                );
+                $this->ajaxreturn($output,'json');
     }
 
     //编辑借款执行方法

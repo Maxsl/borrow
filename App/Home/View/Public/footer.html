@@ -158,7 +158,7 @@
                 return '<table class="table table-striped">'+
                     '<tr>'+
                         '<td>合同号:</td>'+
-                        '<td>'+d.borrow_number+'</td>'+
+                        '<td>'+d.contract_number+'</td>'+
                     '</tr>'+
                     '<tr>'+
                         '<td>手续费率:</td>'+
@@ -306,9 +306,9 @@
                             dataSrc: 'data',
                       },
                       "columnDefs": [ {
-                      "targets": [13,7,9],
-                      "orderable": false
-                      }],
+                        "targets": [7,9,15],
+                        "orderable": false
+                        }],
                       "columns": [
                                 {
                                       "class":          'details-control',
@@ -321,13 +321,14 @@
                                 { "data": "contract_number"},
                                 { "data": "borrow_number"},
                                 { "data": "borrow_money"},
-                                { "data": "borrow_time" },
+                                { "data": "borrow_time"},
                                 { "data": "end_time"},
                                 { "data": "borrow_duration" },
                                 { "data": "re_borrow_interest" },    //已还利息
                                 { "data": "borrow_interest" },          //总利息
                                 { "data": "borrow_interest_rate" },
                                 { "data": "borrow_procedures" },
+                                { "data": "is_procedures" },
                                 { "data": "repayment_type" },
                                 { "data": "action"}
                       ],
@@ -370,7 +371,6 @@
                         }
                 } );
 
-
             // 还款列表
             var repayment_table =  $("#repayment_table").DataTable({
                   "language": {
@@ -403,9 +403,9 @@
                         dataSrc: 'data',
                   },
                   "columnDefs": [ {
-                  "targets": [8,9],
+                  "targets": [9,10],
                   "orderable": false
-                  } ],
+                  }],
                   "columns": [
                             {
                                   "class":          'details-control',
@@ -419,12 +419,13 @@
                             { "data": "repayment_money"},
                             { "data": "repayment_time" },
                             { "data": "real_repayment_time"},
+                            { "data": "is_repayment" },
                             { "data": "is_late" },
                             { "data": "all_late_money" },
                             { "data": "action"}
                   ],
 
-                  "order": [ 1, 'desc' ],
+                  "order": [[7,'asc'], [8,'desc']],
                   "lengthMenu": [ [ 50, 100, 200], [ 50, 100, 200] ]
 
             });

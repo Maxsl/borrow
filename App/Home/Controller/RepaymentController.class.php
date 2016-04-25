@@ -9,11 +9,26 @@ class RepaymentController extends CommonController {
     }
 
     public function ajaxquery(){
-        $order_column = $_GET['order'][0]['column'];
-        $order_data = $_GET['columns'][$order_column]['data'];
-        $dir = $_GET['order'][0]['dir'];
+        //$order_column = $_GET['order'][0]['column'];
+        //$order_data = $_GET['columns'][$order_column]['data'];
+        //$dir = $_GET['order'][0]['dir'];
         //生成排序规则
-        $order = $order_data.' '.$dir;
+        //$order = $order_data.' '.$dir;
+       $order = '';
+        for ($i=0; $i <count($_GET['order']) ; $i++) { 
+        		$order_column = $_GET['order'][$i]['column'];
+        		$order_data = $_GET['columns'][$order_column]['data'];
+        		$dir = $_GET['order'][$i]['dir'];
+
+        		//生成排序规则
+        		if (empty($order)) {
+        			$order .= $order_data.' '.$dir;
+        		}else{
+        			$order .= ",".$order_data.' '.$dir;
+        		}
+        		
+        }
+
         //datatable全部数据    
         $columns = $_GET['columns'];
 
@@ -76,6 +91,12 @@ class RepaymentController extends CommonController {
                             $borrow_repayment_list[$key]['is_late'] = "未逾期";
                 }else if($value['is_late'] == 1){
                             $borrow_repayment_list[$key]['is_late'] = "<span class='text-danger'>逾期</span>";
+                }
+
+                if ($value['is_repayment'] == 0) {
+                            $borrow_repayment_list[$key]['is_repayment'] = "<span class='text-danger'>未还</span>";
+                }else if($value['is_repayment'] == 1){
+                            $borrow_repayment_list[$key]['is_repayment'] = "已还";
                 }
 
                 if (!empty($value['repayment_remarks'])) {
