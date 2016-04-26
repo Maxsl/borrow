@@ -96,11 +96,14 @@ HTML;
     public function add_act(){
        $data['name'] = I('get.name');
        $data['phone'] = I('get.phone');
+       if (empty($data['name'])||empty($data['phone'])) {
+              $this->error("某项没填！");
+       }
        $data['add_time'] = time();
        if (M("user")->add($data)){
             $this->success("添加借款人成功！",U('User/Index'));
         }else{
-            $this->success("添加借款人失败！请重试！");
+            $this->error("添加借款人失败！请重试！");
        };
     }
 

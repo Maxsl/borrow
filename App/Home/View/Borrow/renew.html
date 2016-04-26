@@ -4,33 +4,23 @@
     <div class="col-sm-12">
         <div class="ibox float-e-margins">
             <div class="ibox-title">
-                <h5>添加续借 <small>包括自定义样式的复选和单选按钮</small></h5>
+                <h5>添加续借</h5>
                 <div class="ibox-tools">
                     <a class="collapse-link">
                         <i class="fa fa-chevron-up"></i>
                     </a>
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="form_basic.html#" tppabs="http://www.zi-han.net/theme/hplus/form_basic.html#">
-                        <i class="fa fa-wrench"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-user">
-                        <li><a href="form_basic.html#" tppabs="http://www.zi-han.net/theme/hplus/form_basic.html#">选项1</a>
-                        </li>
-                        <li><a href="form_basic.html#" tppabs="http://www.zi-han.net/theme/hplus/form_basic.html#">选项2</a>
-                        </li>
-                    </ul>
                     <a class="close-link">
                         <i class="fa fa-times"></i>
                     </a>
                 </div>
             </div>
             <div class="ibox-content">
-                <form method="post" class="form-horizontal" action="__MODULE__/Borrow/renew_act">
+                <form method="post" class="form-horizontal" action="__MODULE__/Borrow/renew_act" id="renew_borrow">
 
                     <div class="form-group">
                         <label class="col-sm-2 control-label">借款人</label>
                         <div class="col-sm-3">
-                            <input type="text" class="form-control" disabled="" value="{$borrow_list.name}">
-                            <input type="hidden" class="form-control" value="{$borrow_list.borrow_uid}" name="borrow_uid">
+                            <p class="form-control-static">{$borrow_list.name}</p>
                         </div>
                     </div>
                     
@@ -66,7 +56,7 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label">借款金额</label>
                         <div class="col-md-3">
-                            <input type="text" class="form-control" value="{$borrow_list.borrow_money}" name="borrow_money">
+                            <input type="text" class="form-control" value="{$borrow_list.borrow_money}" name="borrow_money" aria-required="true" aria-invalid="true">
                             <span class="help-block m-b-none">单位:元</span>
                         </div>
                     </div>
@@ -74,7 +64,7 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label">利率</label>
                         <div class="col-md-3">
-                            <input type="text" class="form-control" value="{$borrow_list.borrow_interest_rate}" name="borrow_interest_rate">
+                            <input type="text" class="form-control" value="{$borrow_list.borrow_interest_rate}" name="borrow_interest_rate" aria-required="true" aria-invalid="true">
                             <span class="help-block m-b-none">%</span>
 
                         </div>
@@ -83,7 +73,7 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label">手续费率</label>
                         <div class="col-md-3">
-                            <input type="text" class="form-control" value="{$borrow_list.borrow_procedures_rate}" name="borrow_procedures_rate">
+                            <input type="text" class="form-control" value="{$borrow_list.borrow_procedures_rate}" name="borrow_procedures_rate" aria-required="true" aria-invalid="true">
                             <span class="help-block m-b-none">%</span>
                         </div>
                     </div>
@@ -91,7 +81,7 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label">借款时间</label>
                         <div class="col-md-3">
-                            <input id="hello" class="laydate-icon form-control layer-date" name="borrow_time">
+                            <input id="hello" class="laydate-icon form-control layer-date" name="borrow_time" aria-required="true" aria-invalid="true">
                         </div>
                     </div>
 
@@ -109,6 +99,7 @@
                         <div class="col-sm-4 col-sm-offset-2">
                             <input type="hidden" name="renew_id" value="{$borrow_list.id}">
                             <input type="hidden" name="borrow_number" value="{$borrow_list.borrow_number}">
+                            <input type="hidden" name="borrow_uid" value="{$borrow_list.borrow_uid}">
                             <button class="btn btn-primary" type="submit">保存</button>
                         </div>
                     </div>

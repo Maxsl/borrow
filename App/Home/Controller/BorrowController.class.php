@@ -298,21 +298,28 @@ HTML;
     //添加借款方法
     public function add_act(){
     	$borrow = M("borrow");
-    	$data['borrow_name'] = $_POST['borrow_name'];
-    	$data['borrow_info'] = $_POST['borrow_info'];
-    	$data['borrow_uid'] = $_POST['borrow_uid'];
-    	$data['contract_number'] = $_POST['contract_number'];
-    	$data['borrow_duration'] = $_POST['borrow_duration'];
-    	$data['borrow_money'] = $_POST['borrow_money'];
-            $data['borrow_interest_rate'] = $_POST['borrow_interest_rate'];
-    	$data['borrow_procedures_rate'] = $_POST['borrow_procedures_rate'];
-    	$data['borrow_time'] = strtotime($_POST['borrow_time']);
-    	$data['repayment_type'] = $_POST['repayment_type'];
-            $data['borrow_interest'] = $_POST['borrow_money']*$_POST['borrow_interest_rate']/(12*100)*$_POST['borrow_duration'];   //利息
-            $data['borrow_procedures'] = $_POST['borrow_money']*$_POST['borrow_procedures_rate']/100;   //手续费
+    	$data['borrow_name'] = I('post.borrow_name');
+    	$data['borrow_info'] = I('post.borrow_info');
+    	$data['borrow_uid'] = I('post.borrow_uid');
+    	$data['contract_number'] = I('post.contract_number');
+    	$data['borrow_duration'] = I('post.borrow_duration');
+    	$data['borrow_money'] = I('post.borrow_money');
+            $data['borrow_interest_rate'] = I('post.borrow_interest_rate');
+    	$data['borrow_procedures_rate'] = I('post.borrow_procedures_rate');
+    	$data['borrow_time'] = strtotime(I('post.borrow_time'));
+    	$data['repayment_type'] = I('post.repayment_type');
+           $data['borrow_interest'] = I('post.borrow_money')*I('post.borrow_interest_rate')/(12*100)*I('post.borrow_duration');   //利息
+           $data['borrow_procedures'] = I('post.borrow_money')*I('post.borrow_money')/100;   //手续费
+            if (empty($data['borrow_name']) || empty($data['borrow_info'])|| empty($data['borrow_uid'])
+                || empty($data['contract_number'])|| empty($data['borrow_duration'])|| empty($data['borrow_money'])
+                || empty($data['borrow_interest_rate'])|| empty($data['borrow_procedures_rate'])|| empty($data['borrow_time'])
+                || empty($data['repayment_type'])|| empty($data['borrow_interest'])|| empty($data['borrow_procedures'])) {
+                    $this->error("某个选项没填！");
+            }
             $user_borrow_number = $borrow->where('borrow_uid='.$data['borrow_uid'].' AND renew_id = 0')->count();
             $data['borrow_number'] = $data['borrow_uid'].'.'.($user_borrow_number+1);
-    	$data['add_time'] = time();
+    	 $data['add_time'] = time();
+
     	$borrow_id = $borrow->add($data);
 
     	if($borrow_id == 0){

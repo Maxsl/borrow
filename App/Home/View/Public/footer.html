@@ -78,6 +78,146 @@
                 }
             }        
     </script>
+    <script>
+            // 输入验证
+            $.validator.setDefaults({
+                highlight: function(e) {
+                    $(e).closest(".form-group").removeClass("has-success").addClass("has-error")
+                },
+                success: function(e) {
+                    e.closest(".form-group").removeClass("has-error").addClass("has-success")
+                },
+                errorElement: "span",
+                errorPlacement: function(e, r) {
+                    e.appendTo(r.is(":radio") || r.is(":checkbox") ? r.parent().parent().parent() : r.parent())
+                },
+                errorClass: "help-block m-b-none",
+                validClass: "help-block m-b-none"
+            }),
+            $().ready(function() {
+                var e = "<i class='fa fa-times-circle'></i> ";
+                //添加借款人
+                $("#add_user").validate({
+                    rules: {
+                        name: {
+                            required: !0,
+                            minlength: 2
+                        },
+                        phone: {
+                            required: !0,
+                            minlength: 13
+                        }
+
+                    },
+                    messages: {
+                        name: {
+                            required: e + "请输入姓名",
+                            minlength: e + "姓名必须两个字符以上"
+                        },
+                        phone: {
+                            required: e + "请输入手机号",
+                            minlength: e + "手机号必须13个字符以上"
+                        }
+                    },
+
+                }),
+                    // 编辑借款人
+                    $("#edit_user").validate({
+                        rules: {
+                            name: {
+                                required: !0,
+                                minlength: 2
+                            },
+                            phone: {
+                                required: !0,
+                                minlength: 13
+                            }
+                        },
+                    messages: {
+                        name: {
+                            required: e + "请输入姓名",
+                            minlength: e + "姓名必须两个字符以上"
+                        },
+                        phone: {
+                            required: e + "请输入手机号",
+                            minlength: e + "手机号必须13个字符以上"
+                        }
+                    },
+                    })
+
+                    // 添加借款
+                    $("#add_borrow").validate({
+                        rules: {
+                            borrow_money: {
+                                required: !0,
+                                min:1
+                            },
+                            borrow_interest_rate: {
+                                required: !0,
+                                min:1
+                            },
+                            borrow_procedures_rate: {
+                                required: !0,
+                                min:1
+                            },
+                            borrow_time: {
+                                required: !0,
+                            }
+                        },
+                    messages: {
+                        borrow_money: {
+                            required: e + "请输入借款金额",
+                            min: e + "最少1元！"
+                        },
+                        borrow_interest_rate: {
+                            required: e + "请输入借款利率",
+                        },
+                        borrow_procedures_rate: {
+                            required: e + "请输入借款手续费率",
+                        },
+                        borrow_time: {
+                            required: e + "请选择借款日期",
+                        },
+                    },
+                    })
+
+                    // 续借
+                    $("#renew_borrow").validate({
+                        rules: {
+                            borrow_money: {
+                                required: !0,
+                                min:1
+                            },
+                            borrow_interest_rate: {
+                                required: !0,
+                                min:1
+                            },
+                            borrow_procedures_rate: {
+                                required: !0,
+                                min:1
+                            },
+                            borrow_time: {
+                                required: !0,
+                            }
+                        },
+                    messages: {
+                        borrow_money: {
+                            required: e + "请输入借款金额",
+                            min: e + "最少1元！"
+                        },
+                        borrow_interest_rate: {
+                            required: e + "请输入借款利率",
+                        },
+                        borrow_procedures_rate: {
+                            required: e + "请输入借款手续费率",
+                        },
+                        borrow_time: {
+                            required: e + "请选择借款日期",
+                        },
+                    },
+                    })
+            });
+    </script>
     <!-- 应收实收柱状图 morris-->
     <script>
         $(function() {

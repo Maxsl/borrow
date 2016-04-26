@@ -59,14 +59,14 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label">借款金额</label>
                         <div class="col-md-3">
-                            <input type="text" class="form-control" name="borrow_money">
+                            <input type="text" class="form-control" name="borrow_money" aria-required="true" aria-invalid="true">
                             <span class="help-block m-b-none">金额:<span id="input_money_format">零元整</span></span> 
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 control-label">利率</label>
                         <div class="col-md-3">
-                            <input type="text" class="form-control" name="borrow_interest_rate">
+                            <input type="text" class="form-control" name="borrow_interest_rate" aria-required="true" aria-invalid="true">
                             <span class="help-block m-b-none">%</span>
                         </div>
                     </div>
@@ -74,7 +74,7 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label">手续费率</label>
                         <div class="col-md-3">
-                            <input type="text" class="form-control" name="borrow_procedures_rate">
+                            <input type="text" class="form-control" name="borrow_procedures_rate" aria-required="true" aria-invalid="true">
                             <span class="help-block m-b-none">%</span>
                         </div>
                     </div>
@@ -82,7 +82,7 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label">借款时间</label>
                         <div class="col-md-3">
-                            <input id="hello" class="laydate-icon form-control layer-date" name="borrow_time">
+                            <input id="hello" class="laydate-icon form-control layer-date" name="borrow_time" aria-required="true" aria-invalid="true">
                         </div>
                     </div>
                     <div class="form-group">
@@ -98,7 +98,6 @@
                     <div class="form-group">
                         <div class="col-sm-4 col-sm-offset-2">
                             <button class="btn btn-primary" type="submit">添加</button>
-                            <button class="btn btn-white" type="submit">取消</button>
                         </div>
                     </div>
                 </form>
