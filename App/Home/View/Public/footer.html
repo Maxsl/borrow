@@ -105,7 +105,7 @@
                         },
                         phone: {
                             required: !0,
-                            minlength: 13
+                            minlength: 11
                         }
 
                     },
@@ -116,7 +116,7 @@
                         },
                         phone: {
                             required: e + "请输入手机号",
-                            minlength: e + "手机号必须13个字符以上"
+                            minlength: e + "手机号必须11个字符以上"
                         }
                     },
 
@@ -130,7 +130,7 @@
                             },
                             phone: {
                                 required: !0,
-                                minlength: 13
+                                minlength: 11
                             }
                         },
                     messages: {
@@ -140,7 +140,7 @@
                         },
                         phone: {
                             required: e + "请输入手机号",
-                            minlength: e + "手机号必须13个字符以上"
+                            minlength: e + "手机号必须11个字符以上"
                         }
                     },
                     })
@@ -380,19 +380,19 @@
 
                 });
 
-                $('#id').on( 'keyup', function () {
+                $('#id').on( 'change', function () {
                         index_table
                         .columns( 0 )
                         .search( this.value )
                         .draw();
                 } );
-                $('#borrow_number').on( 'keyup', function () {
+                $('#borrow_number').on( 'change', function () {
                         index_table
                         .columns( 1)
                         .search( this.value )
                         .draw();
                 } );
-                $('#borrow_uname').on( 'keyup', function () {
+                $('#borrow_uname').on( 'change', function () {
                         index_table
                         .columns( 2 )
                         .search( this.value )
@@ -477,19 +477,19 @@
 
                 });
 
-                $('#id').on( 'keyup', function () {
+                $('#id').on( 'change', function () {
                         borrow_table
                         .columns( 0 )
                         .search( this.value )
                         .draw();
                 } );
-                $('#borrow_number').on( 'keyup', function () {
+                $('#borrow_number').on( 'change', function () {
                         borrow_table
                         .columns( 1)
                         .search( this.value )
                         .draw();
                 } );
-                $('#borrow_uname').on( 'keyup', function () {
+                $('#borrow_uname').on( 'change', function () {
                         borrow_table
                         .columns( 2 )
                         .search( this.value )
@@ -570,19 +570,19 @@
 
             });
 
-            $('#id').on( 'keyup', function () {
+            $('#id').on( 'change', function () {
                     repayment_table
                     .columns( 0 )
                     .search( this.value )
                     .draw();
             } );
-            $('#borrow_number').on( 'keyup', function () {
+            $('#borrow_number').on( 'change', function () {
                     repayment_table
                     .columns( 1)
                     .search( this.value )
                     .draw();
             } );
-            $('#borrow_uname').on( 'keyup', function () {
+            $('#borrow_uname').on( 'change', function () {
                     repayment_table
                     .columns( 2 )
                     .search( this.value )
@@ -632,6 +632,9 @@
                   "orderMulti": true,
                   "processing": true,
                   "serverSide": true,
+                  // "buttons": [
+                  //         'copy', 'excel', 'pdf'
+                  //   ],
                   ajax: {
                         url: '__MODULE__/User/ajaxquery',
                         dataSrc: 'data',
@@ -665,13 +668,13 @@
 
             });
 
-            $('#id').on( 'keyup', function () {
+            $('#id').on( 'change', function () {
                     user_table
                     .columns( 1 )
                     .search( this.value )
                     .draw();
             } );
-            $('#name').on( 'keyup', function () {
+            $('#name').on( 'change', function () {
                     user_table
                     .columns( 2)
                     .search( this.value )
