@@ -11,10 +11,11 @@ class IndexController extends CommonController {
             $all_borrow_interest= $borrow->getfield('sum(borrow_interest)');   //总利息
             $now_borrow_interest= D('Index')->now_borrow_interest();     //到期应收利息
             $re_borrow_interest = D('Index')->all_borrow_interest();       //实收利息
-            $all_late_money = M('borrow_repayment')->where('is_late_money =1 AND is_repayment_late_money = 0')->getfield('sum(late_penalty_money+late_interest_money)');        //应收逾期费
+            $all_late_money = M('borrow_repayment')->where('is_late_money =1')->getfield('sum(late_penalty_money+late_interest_money)');        //应收逾期费
             $re_late_money= M('borrow_repayment')->where('is_late_money =1  AND is_repayment_late_money = 1')->getfield('sum(late_penalty_money+late_interest_money)');   //实收逾期费
-            
+            $all_should_re_borrow_money = D('index')->all_should_re_borrow_money();    //累计借款，不包括已还
             $this->assign("all_borrow_money",$all_borrow_money);
+            $this->assign("all_should_re_borrow_money",$all_should_re_borrow_money);
             $this->assign("all_borrow_procedures",$all_borrow_procedures);
             $this->assign("repayment_borrow_procedures",$repayment_borrow_procedures);
             $this->assign("re_borrow_interest",$re_borrow_interest);

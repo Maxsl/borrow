@@ -9,7 +9,7 @@ class LoginController extends Controller {
 
     public function login_act(){
        $name= I('post.name');
-       $password= md5(I('post.password'));
+       $password= md5(I('post.password'));    
        $result = M('admin')->where("name='%s' AND password='%s'",$name,$password)->find();
        if($result){
                     $_SESSION['name'] = $result['name'];

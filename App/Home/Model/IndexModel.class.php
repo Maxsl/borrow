@@ -27,6 +27,22 @@ class IndexModel extends Model{
 		return $re_borrow_interest;
 	}
 
+	public function all_should_re_borrow_money(){
+
+		$all_borrow_repayment = M('borrow_repayment') ->where('is_repayment = 0')->field('id,borrow_id,repayment_money')->select();
+		$all_should_re_borrow_money = 0;
+		foreach ($all_borrow_repayment as $key => $value) {
+
+			//这笔借款未还款数
+			$this_borrow = M('borrow')->where('id='.$value['borrow_id'])->field('borrow_money')->find();
+			if ($this_borrow['borrow_money'] < $value['repayment_money']) {
+				$all_should_re_borrow_money += $this_borrow['borrow_money'];
+			};
+		};
+		return $all_should_re_borrow_money;
+	}
+
+
 	//截止今日到期应收利息
 	public function now_borrow_interest(){
 		$all_borrow_repayment = M('borrow_repayment')->field('id,repayment_money,borrow_id')->where('is_repayment = 0 AND repayment_time<'.time())->select();
