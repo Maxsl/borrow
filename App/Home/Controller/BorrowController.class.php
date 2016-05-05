@@ -298,7 +298,6 @@ HTML;
     //添加借款方法
     public function add_act(){
     	$borrow = M("borrow");
-    	$data['borrow_name'] = I('post.borrow_name');
     	$data['borrow_uid'] = I('post.borrow_uid');
     	$data['contract_number'] = I('post.contract_number');
     	$data['borrow_duration'] = I('post.borrow_duration');
@@ -309,8 +308,9 @@ HTML;
     	$data['repayment_type'] = I('post.repayment_type');
            $data['borrow_interest'] = I('post.borrow_money')*I('post.borrow_interest_rate')/(12*100)*I('post.borrow_duration');   //利息
            $data['borrow_procedures'] = I('post.borrow_money')*I('post.borrow_procedures_rate')/100;   //手续费
-            if (empty($data['borrow_name'])  || empty($data['borrow_uid'])
-                || empty($data['contract_number'])|| empty($data['borrow_duration'])|| empty($data['borrow_money'])
+           var_dump($data);
+           exit();
+            if (empty($data['borrow_uid']) || empty($data['contract_number'])|| empty($data['borrow_duration'])|| empty($data['borrow_money'])
                 || empty($data['borrow_interest_rate'])|| empty($data['borrow_procedures_rate'])|| empty($data['borrow_time'])
                 || empty($data['repayment_type'])|| empty($data['borrow_interest'])|| empty($data['borrow_procedures'])) {
                     $this->error("某个选项没填！");
