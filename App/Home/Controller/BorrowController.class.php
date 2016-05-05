@@ -308,8 +308,6 @@ HTML;
     	$data['repayment_type'] = I('post.repayment_type');
            $data['borrow_interest'] = I('post.borrow_money')*I('post.borrow_interest_rate')/(12*100)*I('post.borrow_duration');   //利息
            $data['borrow_procedures'] = I('post.borrow_money')*I('post.borrow_procedures_rate')/100;   //手续费
-           var_dump($data);
-           exit();
             if (empty($data['borrow_uid']) || empty($data['contract_number'])|| empty($data['borrow_duration'])|| empty($data['borrow_money'])
                 || empty($data['borrow_interest_rate'])|| empty($data['borrow_procedures_rate'])|| empty($data['borrow_time'])
                 || empty($data['repayment_type'])|| empty($data['borrow_interest'])|| empty($data['borrow_procedures'])) {

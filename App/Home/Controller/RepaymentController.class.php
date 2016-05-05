@@ -5,6 +5,7 @@ class RepaymentController extends CommonController {
 
     public function index(){
         $this->assign("title","还款列表-借贷管理系统");
+        
         $this->display();
     }
 
@@ -43,7 +44,6 @@ class RepaymentController extends CommonController {
         if (!empty($columns[2]['search']['value'])) {
                 $where.= " AND u.name LIKE '%".$columns[2]['search']['value']."%'";
         }
-
         // 全部还款
         $Model = new \Think\Model();
         $borrow_repayment_list= $Model
