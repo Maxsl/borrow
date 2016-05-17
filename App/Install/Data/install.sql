@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主机: localhost
--- 生成日期: 2016 年 04 月 20 日 15:57
+-- 生成日期: 2016 年 05 月 06 日 11:13
 -- 服务器版本: 5.5.47
 -- PHP 版本: 5.3.29
 
@@ -33,8 +33,10 @@ CREATE TABLE IF NOT EXISTS `admin` (
   `add_time` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '添加时间',
   `last_time` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '最后登录',
   `ip` varchar(50) NOT NULL DEFAULT '' COMMENT '登录ip',
+  `class` tinyint(1) NOT NULL DEFAULT '0' COMMENT '管理类型 1总 2小',
+  `real_name` varchar(255) NOT NULL DEFAULT '' COMMENT '真实姓名',
   PRIMARY KEY (`Id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='管理员' AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='管理员' AUTO_INCREMENT=5 ;
 
 -- --------------------------------------------------------
 
@@ -62,7 +64,7 @@ CREATE TABLE IF NOT EXISTS `borrow` (
   `add_time` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '添加时间',
   `borrow_remarks` varchar(255) NOT NULL DEFAULT '' COMMENT '借款备注',
   PRIMARY KEY (`Id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='借款' AUTO_INCREMENT=22 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='借款' AUTO_INCREMENT=23 ;
 
 -- --------------------------------------------------------
 
@@ -115,7 +117,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `add_time` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '添加时间',
   PRIMARY KEY (`Id`),
   KEY `name` (`name`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='投资人' AUTO_INCREMENT=17 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='投资人' AUTO_INCREMENT=18 ;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

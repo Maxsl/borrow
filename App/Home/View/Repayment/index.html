@@ -37,9 +37,42 @@
                                 <input type="text" class="form-control" id="borrow_uname" placeholder="模糊">
                         </div>
                 </div>
-                    <div class="col-sm-6" id="export-btn">
-                            <a data-type="xls" data-table="repayment_table" href="javascript:;" type="button" class="btn btn-danger btn-sm">导出xls</a>
-                    </div>
+                <div class="col-sm-2">
+                        <div class="input-group m-b">
+                        <span class="input-group-btn">
+                                <button type="button" class="btn btn-primary" >以年查询</button> </span>
+                                <!-- <input type="text" class="form-control" id="borrow_uname" placeholder="模糊"> -->
+                                <select class="form-control m-b" id="year_search">
+                                     <option value="{$year-1}">{$year-1}年</option>
+                                     <option value="{$year}" selected="">{$year}年</option>
+                                     <option value="{$year+1}">{$year+1}年</option>
+                                </select>
+                        </div>
+                </div>
+                <div class="col-sm-2">
+                        <div class="input-group m-b">
+                        <span class="input-group-btn">
+                                <button type="button" class="btn btn-primary" >以月查询</button> </span>
+                                <!-- <input type="text" class="form-control" id="borrow_uname" placeholder="模糊"> -->
+                                <select class="form-control m-b" id="months_search">
+                                     <option value="1" selected="">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                </select>
+                        </div>
+                </div>
+                 <div class="col-sm-2" id="export-btn">
+                         <a data-type="xls" data-table="repayment_table" href="javascript:;" type="button" class="btn btn-danger btn-sm">导出xls</a>
+                 </div>
 
                 </div>
                 <div class="table-responsive">

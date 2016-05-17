@@ -63,7 +63,8 @@ class UserController extends CommonController {
                       $del_user_url = U('User/del_user',array('id' =>$value['id']));
                       $user_list[$key]['action'] = <<<HTML
                      <a title="编辑" href="$user_edit_url"><i class="fa fa-edit text-navy"></i></a>
-                     <a title="删除" onclick=if(confirm("确认删除这个借款人？")){location.href="$del_user_url ";}><i class="fa fa-trash text-danger"></i></a>
+                     <a title="删除" onclick=if(confirm("确认删除这个借款人？")){location.href="$del_user_url";}><i class="fa fa-trash text-danger"></i></a>
+                     
 HTML;
               }
 
@@ -85,6 +86,21 @@ HTML;
            $this->assign("user",$user);
            $this->assign("title","编辑借款人-借贷管理系统");
            $this->display();
+    }
+    //编辑借款人方法
+    public function edit_act(){
+            $data['name'] = I('get.name');
+            $data['phone'] = I('get.phone');
+            $user_id = I('get.user_id');
+            if (empty($data['name'])||empty($data['phone'])) {
+                   $this->error("某项没填！");
+            }
+           $result = M("user")->where('id=$user_id')->save($data);
+            if ($result){
+                 $this->success("编辑借款人成功！",U('User/Index'));
+             }else{
+                 $this->error("编辑借款人失败！请重试！");
+            };
     }
 
     //添加借款人

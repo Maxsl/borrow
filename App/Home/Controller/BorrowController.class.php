@@ -84,12 +84,14 @@ class BorrowController extends CommonController {
                         
                         $borrow_list[$key]['re_borrow_interest'] = D('Borrow')->re_borrow_interest($value['id']);
 
+                        $borrow_repayment_list_url = U('Repayment/index',array('borrow_number'=>$value['borrow_number']));
                         $borrow_edit_url = U('Borrow/edit',array('id'=>$value['id']));
                         $borrow_renew_url = U('Borrow/renew',array('id'=>$value['id']));
                         $del_borrow_url = U('Borrow/del_borrow',array('id'=>$value['id']));
                         
                         $borrow_list[$key]['action'] =<<<HTML
-                     <a title="编辑" href="$borrow_edit_url "><i class="fa fa-edit text-info"></i></button>
+                     <a title="查看还款记录" href="$borrow_repayment_list_url"><i class="fa fa-search text-info"></i></a>
+                     <a title="编辑" href="$borrow_edit_url "><i class="fa fa-edit text-info"></i></a>
                      <a title="续借" href="$borrow_renew_url"><i class="fa fa-copy text-success"></i></a>
                      <a title="确认收取手续费" data-toggle="modal" data-target="#confirm_procedures" onclick="change_id($value[id])"><i class="fa fa-cny text-warning"></i></a>
                      <a title="删除" onclick="if(confirm('确认删除这条记录？')){location.href='$del_borrow_url';}"><i class="fa fa-trash text-danger"></i></a>

@@ -5,7 +5,8 @@ class RepaymentController extends CommonController {
 
     public function index(){
         $this->assign("title","还款列表-借贷管理系统");
-        
+        $this->assign("borrow_number",I('get.borrow_number')?I('get.borrow_number'):'null');
+        $this->assign("year",date("Y"));
         $this->display();
     }
 
@@ -44,6 +45,11 @@ class RepaymentController extends CommonController {
         if (!empty($columns[2]['search']['value'])) {
                 $where.= " AND u.name LIKE '%".$columns[2]['search']['value']."%'";
         }
+        if (!empty($columns[5]['search']['value'])) {
+                $months_time = D('index')->m_frist_and_last($columns[5]['search']['value'],I('get.year_search'));
+                $where.= " AND r.repayment_time >$months_time[firstday] AND r.repayment_time < $months_time[lastday]";
+        }
+
         // 全部还款
         $Model = new \Think\Model();
         $borrow_repayment_list= $Model
@@ -70,7 +76,7 @@ class RepaymentController extends CommonController {
                    'user'=>'u'
                )
          )
-        ->where('r.borrow_uid = u.id AND r.borrow_id = b.id')
+        ->where('r.borrow_uid = u.id AND r.borrow_id = b.id'.$where)
         ->field('r.*, u.name, u.id as uid, b.borrow_number')
         ->count();
 

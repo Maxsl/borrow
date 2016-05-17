@@ -13,14 +13,15 @@ class IndexModel extends Model{
 			$this_borrow = M('borrow_repayment')->field('count(id) as count,sum(repayment_money) as all_repayment_money')->where('borrow_id='.$value['id'].' AND is_repayment = 1')->find();
 
 			//判断已还款记录是否和还款期数相同
-			// $value['borrow_duration'] = intval($value['borrow_duration']);
-			if ($value['repayment_type'] == "到期本息" ) {
-				$re_borrow_interest += $value['borrow_interest'] ;
-			}else{
-				if ($this_borrow['count'] == $value['borrow_duration']) {        //相同 累加借款表内的利息值
-					$re_borrow_interest += $value['borrow_interest'];
+			if ($this_borrow['count']!=0) {
+				if ($value['repayment_type'] == "到期本息" ) {
+					$re_borrow_interest += $value['borrow_interest'] ;
 				}else{
-					$re_borrow_interest += $this_borrow['all_repayment_money'];    //不同 则累加已还款记录内的值
+					if ($this_borrow['count'] == $value['borrow_duration']) {        //相同 累加借款表内的利息值
+						$re_borrow_interest += $value['borrow_interest'];
+					}else{
+						$re_borrow_interest += $this_borrow['all_repayment_money'];    //不同 则累加已还款记录内的值
+					}
 				}
 			}
 		}

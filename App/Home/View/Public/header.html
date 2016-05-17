@@ -11,6 +11,7 @@
     <link href="__PUBLIC__/css/bootstrap.min.css-v=3.3.5.css" rel="stylesheet">
     <link href="__PUBLIC__/font-awesome/css/font-awesome.css" rel="stylesheet">
     <link href="__PUBLIC__/css/plugins/iCheck/custom.css" rel="stylesheet">
+    
     <!-- morris -->
     <link href="__PUBLIC__/css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet">
     
@@ -101,6 +102,14 @@
                             <span class="fa arrow"></span>
                         </a>
                         <ul class="nav nav-second-level">
+                            <if condition="$admin_class eq 1">
+                             <li>
+                                 <a class="J_menuItem" href="__MODULE__/Config/add_admin" data-index="4">添加管理</a>
+                             </li>
+                            <li>
+                                <a class="J_menuItem" href="__MODULE__/Config/admin" data-index="4">管理列表</a>
+                            </li>
+                            </if>
                             <li>
                                 <a class="J_menuItem" href="__MODULE__/Config/dbbak" data-index="4">备份数据库</a>
                             </li>

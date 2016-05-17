@@ -96,6 +96,75 @@
             }),
             $().ready(function() {
                 var e = "<i class='fa fa-times-circle'></i> ";
+                //添加管理员
+                $("#add_admin").validate({
+                    rules: {
+                        name: {
+                            required: !0,
+                            minlength: 3
+                        },
+                        real_name: {
+                            required: !0,
+                            minlength: 2
+                        },
+                        password: {
+                            required: !0,
+                            minlength: 6
+                        },
+                        re_password: {
+                            required: !0,
+                            minlength: 6,
+                            equalTo: "#password"
+                        },
+
+                    },
+                    messages: {
+                        name: {
+                            required: e + "请输入登录名",
+                            minlength: e + "登录名必须3个字符以上"
+                        },
+                        real_name: {
+                            required: e + "请输入真实姓名",
+                            minlength: e + "真实姓名必须在2个字符以上"
+                        },
+                        password: {
+                            required: e + "请输入密码",
+                            minlength: e + "密码必须6个字符以上"
+                        },
+                        re_password: {
+                            required: e + "请再次输入密码",
+                            minlength: e + "密码必须6个字符以上",
+                            equalTo: e + "两次输入的密码不一致"
+                        },
+                    },
+                });
+                    //修改管理员
+                    $("#edit_admin").validate({
+                        rules: {
+                            password: {
+                                required: !0,
+                                minlength: 6
+                            },
+                            re_password: {
+                                required: !0,
+                                minlength: 6,
+                                equalTo: "#password"
+                            },
+
+                        },
+                        messages: {
+                            password: {
+                                required: e + "请输入密码",
+                                minlength: e + "密码必须6个字符以上"
+                            },
+                            re_password: {
+                                required: e + "请再次输入密码",
+                                minlength: e + "密码必须6个字符以上",
+                                equalTo: e + "两次输入的密码不一致"
+                            },
+                        },
+                });
+
                 //添加借款人
                 $("#add_user").validate({
                     rules: {
@@ -540,12 +609,18 @@
                   "serverSide": true,
                   ajax: {
                         url: '__MODULE__/Repayment/ajaxquery',
+                        "data": function ( d ) {
+                                d.year_search = $('#year_search').val();
+                        },
                         dataSrc: 'data',
                   },
                   "columnDefs": [ {
                   "targets": [9,10],
                   "orderable": false
                   }],
+                  "search": {
+                    "search": "Fred"
+                  },
                   "columns": [
                             {
                                   "class":          'details-control',
@@ -588,6 +663,29 @@
                     .search( this.value )
                     .draw();
             });
+
+            $('#months_search').on( 'change', function () {
+                    repayment_table
+                    .columns( 5 )
+                    .search( this.value )
+                    .draw();
+            });
+
+            $('#year_search').on( 'change', function () {
+                    var months_varlue = $('#months_search').val();
+                    repayment_table
+                    .columns( 5 )
+                    .search( months_varlue )
+                    .draw();
+            });
+            // 提前过滤
+            var borrow_number = '{$borrow_number}';
+            if (borrow_number!== 'null') {
+                    repayment_table
+                    .columns( 1)
+                    .search( borrow_number )
+                    .draw();
+            };
 
             $('#repayment_table tbody').on('click', 'td.details-control', function () {
                     var tr = $(this).closest('tr');
@@ -695,6 +793,69 @@
                         tr.addClass('shown');
                     }
             } );
+
+
+            // 管理员
+            var admin_table =  $("#admin_table").DataTable({
+                  "language": {
+                        "decimal":        "",
+                        "emptyTable":     "没有数据",
+                        "info":           "从 第_START_ 到 _END_条 /共 _TOTAL_ 条数据",
+                        "infoEmpty":      "从 0到 0 /共 0条数据",
+                        "infoFiltered":   "(从 _MAX_ 条数据中检索)",
+                        "infoPostFix":    "",
+                        "thousands":      ",",
+                        "lengthMenu":     "每页显示 _MENU_ 条记录",
+                        "loadingRecords": "加载中...",
+                        "processing":     "搜索中...",
+                        "search":         "搜索:",
+                        "zeroRecords":    "没有检索到数据",
+                        "paginate": {
+                            "first":      "首页",
+                            "last":       "尾页",
+                            "next":       "后一页",
+                            "previous":   "前一页"
+                        },
+                  },
+                  // 设置相关排列
+                  "dom": 't<".col-sm-4"l><".col-sm-4"i><".col-sm-4"p>',
+                  "orderMulti": true,
+                  "processing": true,
+                  "serverSide": true,
+                  ajax: {
+                        url: '__MODULE__/Config/admin_query',
+                        dataSrc: 'data',
+                  },
+                  "columnDefs": [ {
+                  "targets": [5],
+                  "orderable": false
+                  } ],
+                  "columns": [
+                            { "data": "id" },
+                            { "data":"name"},
+                            { "data": "real_name"},
+                            { "data": "class"},
+                            { "data": "add_time"},
+                            { "data": "action" }
+                  ],
+                  "order": [ 1, 'desc' ],
+                  "lengthMenu": [ [ 50, 100, 200], [ 50, 100, 200] ]
+
+            });
+
+            $('#name').on( 'keyup', function () {
+                    admin_table
+                    .columns( 1 )
+                    .search( this.value )
+                    .draw();
+            });
+            $('#real_name').on( 'keyup', function () {
+                    admin_table
+                    .columns( 2 )
+                    .search( this.value )
+                    .draw();
+            });
+
 
     });
     </script>
