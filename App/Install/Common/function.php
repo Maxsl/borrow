@@ -190,8 +190,8 @@ function create_tables($db, $prefix = ''){
 function register_administrator($db, $prefix, $admin){
 	show_msg('开始注册初始管理员帐号...');
 	$password = md5($admin['password']);
-	$sql = "INSERT INTO `{$prefix}admin` ( `name`, `password`,`add_time`) VALUES
-( '{$admin['name']}', '{$password}',".time().")";
+	$sql = "INSERT INTO `{$prefix}admin` ( `name`, `password`,`add_time`,`class`) VALUES
+( '{$admin['name']}', '{$password}',".time().",'1')";
 	//执行sql
 	$db->execute($sql);
 	show_msg('初始管理员帐号注册完成！');
