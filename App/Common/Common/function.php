@@ -7,8 +7,10 @@ function d2int($d){
 function acount($arr){
 	return count($arr);
 }
-function money_format($m){
-	return number_format($m,2);
+if (!function_exists('money_format')){
+    function money_format($m){
+    	return number_format($m,2);
+    }
 }
 function msubstr($str, $start=0, $length, $charset="utf-8", $suffix=true) {
     if(function_exists("mb_substr")){
